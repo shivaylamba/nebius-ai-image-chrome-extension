@@ -1,60 +1,136 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Image Generator Side Panel</title>
+  <title>AI Tools Suite</title>
   <!-- <link href="./styles.css" rel="stylesheet"> -->
   <link href="dist/output.css" rel="stylesheet">
 </head>
-<body class="bg-background text-foreground p-6">
-  <div class="space-y-6">
-    <div class="space-y-2">
-      <h2 class="text-2xl font-semibold tracking-tight">Generate Image from Text</h2>
-      <p class="text-sm text-muted-foreground">Enter your prompt below to generate an image.</p>
-    </div>
-
-    <div class="space-y-4">
-      <textarea
-        id="promptInput"
-        placeholder="Enter your prompt here..."
-        class="w-full min-h-[120px] rounded-lg border border-input bg-background px-3 py-2 text-sm 
-               placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-      ></textarea>
-
-      <button 
-        id="generateBtn"
-        class="w-full px-4 py-2 bg-primary text-primary-foreground rounded-lg
-               hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
-      >
-        Generate Image
-      </button>
-    </div>
-
-    <!-- Loading State -->
-    <div id="loading" class="hidden">
-      <div class="flex items-center justify-center gap-2 text-muted-foreground">
-        <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24">
-          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"/>
-          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+<body class="bg-background text-foreground">
+  <div class="flex h-screen">
+    <!-- Sidebar Navigation -->
+    <div class="w-16 border-r border-border bg-muted flex flex-col items-center py-4 space-y-4">
+      <button id="imageGenTab" class="p-2 rounded-lg hover:bg-accent text-muted-foreground hover:text-accent-foreground" title="Image Generation">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
         </svg>
-        Generating image...
-      </div>
+      </button>
+      <button id="reviewTab" class="p-2 rounded-lg hover:bg-accent text-muted-foreground hover:text-accent-foreground" title="AI Review">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+      </button>
     </div>
 
-    <!-- Image Container -->
-    <div id="imageContainer" class="rounded-lg border border-border bg-card p-2"></div>
+    <!-- Content Area -->
+    <div class="flex-1 p-6">
+      <!-- Image Generation Section -->
+      <div id="imageGenSection" class="space-y-6">
+        <div class="space-y-2">
+          <h2 class="text-2xl font-semibold tracking-tight">Generate Image from Text for Blog Content</h2>
+          <p class="text-sm text-muted-foreground">Enter your prompt below to generate an image for the selected text for your blog.</p>
+        </div>
 
-    <!-- Action Buttons -->
-    <div class="flex gap-3 hidden" id="buttons">
-      <button id="copyUrl" 
-              class="flex-1 px-4 py-2 bg-secondary text-secondary-foreground rounded-lg
-                     hover:bg-secondary/90 transition-colors">
-        Copy URL
-      </button>
-      <button id="downloadImage" 
-              class="flex-1 px-4 py-2 bg-primary text-primary-foreground rounded-lg
-                     hover:opacity-90 transition-opacity">
-        Download
-      </button>
+        <div class="space-y-4">
+          <textarea
+            id="promptInput"
+            placeholder="Enter your prompt here..."
+            class="w-full min-h-[120px] rounded-lg border border-input bg-background px-3 py-2 text-sm 
+                   placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+          ></textarea>
+
+          <button 
+            id="generateBtn"
+            class="w-full px-4 py-2 bg-primary text-primary-foreground rounded-lg
+                   hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Generate Image
+          </button>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loading" class="hidden">
+          <div class="flex items-center justify-center gap-2 text-muted-foreground">
+            <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"/>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+            </svg>
+            Generating image...
+          </div>
+        </div>
+
+        <!-- Image Container -->
+        <div id="imageContainer" class="rounded-lg border border-border bg-card p-2"></div>
+
+        <!-- Action Buttons -->
+        <div class="flex gap-3 hidden" id="buttons">
+          <button id="copyUrl" 
+                  class="flex-1 px-4 py-2 bg-secondary text-secondary-foreground rounded-lg
+                         hover:bg-secondary/90 transition-colors">
+            Copy URL
+          </button>
+          <button id="downloadImage" 
+                  class="flex-1 px-4 py-2 bg-primary text-primary-foreground rounded-lg
+                         hover:opacity-90 transition-opacity">
+            Download
+          </button>
+        </div>
+      </div>
+
+      <!-- AI Review Section -->
+      <div id="reviewSection" class="hidden space-y-6">
+        <div class="space-y-2">
+          <h2 class="text-2xl font-semibold tracking-tight">Blog Content Reviewer</h2>
+          <p class="text-sm text-muted-foreground">Enter your Blog content below for AI review and suggestions on how to improve it.</p>
+        </div>
+
+        <!-- Add model selector -->
+        <div class="space-y-2">
+          <label for="modelSelector" class="text-sm font-medium">Select AI Model</label>
+          <select 
+            id="modelSelector" 
+            class="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm
+                   focus:outline-none focus:ring-2 focus:ring-ring"
+          >
+            <option value="deepseek-ai/DeepSeek-V3">DeepSeek V3 (Default)</option>
+            <option value="deepseek-ai/DeepSeek-R1">DeepSeek R1</option>
+          </select>
+        </div>
+
+        <div class="space-y-4">
+          <textarea
+            id="reviewInput"
+            placeholder="Enter text for review..."
+            class="w-full min-h-[200px] rounded-lg border border-input bg-background px-3 py-2 text-sm 
+                   placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+          ></textarea>
+
+          <button 
+            id="reviewBtn"
+            class="w-full px-4 py-2 bg-primary text-primary-foreground rounded-lg
+                   hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Generate Review
+          </button>
+        </div>
+
+        <div id="reviewLoading" class="hidden">
+          <div class="flex items-center justify-center gap-2 text-muted-foreground">
+            <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"/>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+            </svg>
+            Generating review...
+          </div>
+        </div>
+
+        <div id="reviewResult" class="hidden rounded-lg border border-border bg-card p-4 space-y-2">
+          <div class="flex justify-between items-center">
+            <h3 class="font-medium">AI Review Results</h3>
+            <button id="copyReview" class="text-sm text-primary hover:opacity-80">Copy Review</button>
+          </div>
+          <div id="reviewContent" class="text-sm whitespace-pre-wrap"></div>
+        </div>
+      </div>
     </div>
   </div>
   <script src="sidepanel.js"></script>

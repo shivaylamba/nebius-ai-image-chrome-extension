@@ -1,7 +1,31 @@
-# Nebius AI Text to Image Chrome Extension
+#  AI Blogging Assistant Suite - Chrome Extension powered by Nebius AI
 
-This is a Chrome extension that generates images from text using [Nebius AI Studio](https://studio.nebius.ai/) Flux model. This extension allows you to generate images both from selected text on any webpage and through a dedicated side panel interface. This is particularly useful for instance when writing blogs and need to quickly generate an image for that specific blog. 
+A powerful Chrome extension that enhances your blogging workflow with AI-powered tools using [Nebius AI Studio](https://studio.nebius.ai/) with support for models like Flux and Deepseek R1. This suite helps bloggers generate relevant images and receive instant content reviews while writing or editing blog posts.
 
+## Features
+
+### 1. Quick Access Tools
+- **Floating Overlay**: Select any text to reveal a convenient floating menu with AI tools
+- **Context Menu**: Right-click selected text for alternative access to AI features
+- **Keyboard Shortcuts**: 
+  - `Ctrl+B` (Windows) / `Cmd+B` (Mac): Open popup
+  - `Ctrl+Shift+B` (Windows) / `Cmd+Shift+B` (Mac): Toggle side panel
+
+### 2. AI Image Generation
+- Generate relevant images from text descriptions
+- Perfect for blog post headers and illustrations
+- Customizable image dimensions
+- Quick download and copy options
+
+### 3. AI Content Review
+- Instant feedback on your blog content
+- Real-time streaming response
+- Choose between different AI models:
+  - DeepSeek V3 (Default)
+  - DeepSeek R1
+- Technical accuracy checks
+- Writing style suggestions
+- Content improvement recommendations
 
 ## 🚀 Installation
 
@@ -33,20 +57,24 @@ npm run dev
 ```
 
 
-## 🎮 Usage
+## Usage
 
-### Context Menu
-1. Select text on any webpage
-2. Right-click and select "Generate image for selected text"
-3. View the generated image in the popup
-4. Download or copy the image URL
+### Image Generation
+1. Select text that describes the image you want
+2. Either:
+   - Click the floating overlay's image icon
+   - Right-click and select "AI Tools > Generate image from text"
+3. The side panel will open and automatically generate your image
+4. Download or copy the generated image
 
-### Side Panel
-1. Click the extension icon
-2. Click "Open side panel" or use `Ctrl+Shift+B` (`Cmd+Shift+B` on Mac)
-3. Enter your prompt
-4. Click "Generate Image"
-
+### Content Review
+1. Select the text you want to review
+2. Either:
+   - Click the floating overlay's review icon
+   - Right-click and select "AI Tools > Review text with AI"
+3. The side panel will open and start streaming the AI review
+4. Choose your preferred AI model for different review styles
+5. Copy the review suggestions when complete
 
 ## 🏗️ Built With
 - [Tailwind CSS](https://tailwindcss.com/) - For styling

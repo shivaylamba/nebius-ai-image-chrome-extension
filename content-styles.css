@@ -1,0 +1,53 @@
+.nebius-overlay {
+  position: fixed !important;
+  z-index: 2147483647 !important; /* Maximum z-index value */
+  background: white !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  display: none !important;
+  overflow: hidden !important;
+  font-family: system-ui, -apple-system, sans-serif !important;
+  min-width: 150px !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+.nebius-overlay.active {
+  display: block !important;
+  animation: nebiusOverlayFadeIn 0.2s ease-out !important;
+}
+
+.nebius-overlay-button {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 8px 12px !important;
+  background: transparent !important;
+  border: none !important;
+  width: 100% !important;
+  cursor: pointer !important;
+  color: #1a1a1a !important;
+  font-size: 13px !important;
+  transition: background-color 0.2s !important;
+  text-align: left !important;
+}
+
+.nebius-overlay-button:hover {
+  background-color: #f5f5f5 !important;
+}
+
+.nebius-overlay-button svg {
+  width: 16px !important;
+  height: 16px !important;
+  flex-shrink: 0 !important;
+}
+
+@keyframes nebiusOverlayFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+} 

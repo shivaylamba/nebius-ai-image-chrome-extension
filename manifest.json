@@ -44,8 +44,13 @@
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'"
   },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "css": ["content-styles.css"],
+    "js": ["content-script.js"]
+  }],
   "web_accessible_resources": [{
-    "resources": ["dist/output.css"],
+    "resources": ["dist/output.css", "icons/*"],
     "matches": ["<all_urls>"]
   }]
 } 
