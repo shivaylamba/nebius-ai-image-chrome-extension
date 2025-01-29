@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Generated Image</title>
+  <!-- <link href="./styles.css" rel="stylesheet"> -->
+  <link href="dist/output.css" rel="stylesheet">
+</head>
+<body class="bg-background text-foreground p-4 min-w-[512px]">
+  <div class="space-y-4">
+    <!-- Side Panel Button -->
+    <button id="openSidePanel" 
+            class="w-full px-4 py-2 bg-primary text-primary-foreground rounded-lg 
+                   hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+      </svg>
+      Open Side Panel
+    </button>
+
+    <!-- Prompt Text -->
+    <div id="prompt" class="text-sm text-muted-foreground italic"></div>
+
+    <!-- Image Container -->
+    <div id="imageContainer" class="rounded-lg border border-border bg-card p-2">
+      <img id="generatedImage" class="w-full h-auto rounded-md" />
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="flex gap-3">
+      <button id="copyUrl" 
+              class="flex-1 px-4 py-2 bg-secondary text-secondary-foreground rounded-lg
+                     hover:bg-secondary/90 transition-colors">
+        Copy URL
+      </button>
+      <button id="downloadImage" 
+              class="flex-1 px-4 py-2 bg-primary text-primary-foreground rounded-lg
+                     hover:opacity-90 transition-opacity">
+        Download
+      </button>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html> 

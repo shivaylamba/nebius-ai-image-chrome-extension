@@ -1,0 +1,51 @@
+{
+  "manifest_version": 3,
+  "name": "Text to Image Generator",
+  "version": "1.0",
+  "description": "Generate images from selected text using Nebius AI",
+  "permissions": [
+    "contextMenus",
+    "storage",
+    "sidePanel",
+    "downloads"
+  ],
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+B",
+        "mac": "Command+B"
+      }
+    },
+    "toggle-side-panel": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+B",
+        "mac": "Command+Shift+B"
+      },
+      "description": "Toggle side panel"
+    }
+  },
+  "host_permissions": [
+    "https://api.studio.nebius.ai/*",
+    "https://pictures-storage.storage.eu-north1.nebius.cloud/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "icons": {
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "web_accessible_resources": [{
+    "resources": ["dist/output.css"],
+    "matches": ["<all_urls>"]
+  }]
+} 
